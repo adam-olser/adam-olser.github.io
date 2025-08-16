@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Resume files (sensitive)
+Adam Olser - d resume.rtfd/
+*.rtfd/

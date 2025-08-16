@@ -534,10 +534,6 @@ function About({
             </p>
             <div className="skills">
               <h3>Technologies & Skills</h3>
-              <div className="skill-summary">
-                📊 {Array.from(repoLanguages).length} technologies detected from
-                your {repos.length} repositories
-              </div>
               <div className="skill-categories">
                 {skillCategories.map((category) => (
                   <div key={category.category} className="skill-category">
