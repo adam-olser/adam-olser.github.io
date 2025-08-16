@@ -1,37 +1,30 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <title>Startup</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
-    <!-- Note that the below Bootstrap file is a specific version. If you grab the most
-    current from Bootstrap website, you will see the button grow transition being a lot faster
-    than in my video. Use whichever style sheet you like best! -->
-    <!-- Bootstrap CSS from a CDN. This way you don't have to include the bootstrap file yourself -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- My own stylesheet -->
-    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="Adam Olser - Full-Stack Developer & Open Source Contributor. Passionate about modern web technologies, machine learning, and blockchain development." />
+    <meta name="keywords" content="Adam Olser, Full Stack Developer, React, TypeScript, Python, Machine Learning, Web3, Open Source" />
+    <meta name="author" content="Adam Olser" />
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Adam Olser - Full-Stack Developer Portfolio" />
+    <meta property="og:description" content="Passionate full-stack developer with experience in modern web technologies, machine learning, and blockchain development." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adam-olser.github.io" />
+    
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Adam Olser - Full-Stack Developer Portfolio" />
+    <meta name="twitter:description" content="Passionate full-stack developer with experience in modern web technologies, machine learning, and blockchain development." />
+    
+    <title>Adam Olser - Full-Stack Developer Portfolio</title>
   </head>
   <body>
-    <header class="startup text-center text-white d-flex">
-      <div class="container my-auto">
-        <div class="row">
-          <div class="col-lg-12 my-auto">
-            <h1 class="text-uppercase faded">
-              <strong>the biggest startup event of the year</strong>
-            </h1>
-            <hr>
-          </div>
-          <div class="col-lg-12 my-auto">
-            <button class="btn btn-primary btn-xl">Find Out More</button>
-          </div>
-        </div>
-      </div>
-    </header>
-
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
-
 </html>
