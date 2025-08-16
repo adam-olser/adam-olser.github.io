@@ -221,6 +221,22 @@ h4 {
   box-shadow: var(--shadow-lg);
   border: 6px solid white;
   animation: float 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.profile-image.clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.profile-image.clickable:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 25px 50px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary);
+}
+
+.profile-image.clickable:active {
+  transform: translateY(-2px) scale(1.02);
 }
 
 .profile-image img {
