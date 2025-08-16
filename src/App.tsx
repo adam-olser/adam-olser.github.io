@@ -249,26 +249,28 @@ function ProjectCard({ repo, featured = false }: { repo: Repository; featured?: 
         </div>
       </div>
       
-      <p className="project-description">
-        {getProjectDescription(repo.name, repo.description)}
-      </p>
-      
-      <div className="project-tech">
-        {repo.language && <span className="tech-tag primary">{repo.language}</span>}
-        {repo.topics.slice(0, 3).map(topic => (
-          <span key={topic} className="tech-tag">{topic}</span>
-        ))}
-      </div>
-      
-      <div className="project-links">
-        <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-          View Code
-        </a>
-        {repo.homepage && (
-          <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-            Live Demo
+      <div className="project-content">
+        <p className="project-description">
+          {getProjectDescription(repo.name, repo.description)}
+        </p>
+        
+        <div className="project-tech">
+          {repo.language && <span className="tech-tag primary">{repo.language}</span>}
+          {repo.topics.slice(0, 3).map(topic => (
+            <span key={topic} className="tech-tag">{topic}</span>
+          ))}
+        </div>
+        
+        <div className="project-links">
+          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+            View Code
           </a>
-        )}
+          {repo.homepage && (
+            <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              Live Demo
+            </a>
+          )}
+        </div>
       </div>
     </div>
   )
