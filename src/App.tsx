@@ -110,8 +110,8 @@ function Header({ user }: { user: GitHubUser | null }) {
         <div className="profile-image">
           <img src={user?.avatar_url || '/header.jpg'} alt="Adam Olser" />
         </div>
-        <h1>Adam Olser</h1>
-        <p className="tagline">Full-Stack Developer & Open Source Contributor</p>
+        <h1>Adam Olšer</h1>
+        <p className="tagline">Software Engineer at Kiwi.com</p>
         <div className="stats">
           <div className="stat">
             <span className="number">{user?.public_repos || 0}</span>
@@ -147,8 +147,8 @@ function About({ user }: { user: GitHubUser | null }) {
   ]
 
   const skills = [
-    'JavaScript/TypeScript', 'React', 'Python', 'Node.js', 
-    'Machine Learning', 'Web3/Blockchain', 'UI/UX Design'
+    'JavaScript', 'TypeScript', 'React.js', 'CSS Frameworks', 
+    'GraphQL', 'REST APIs', 'Relay', 'Node.js', 'Travel Tech'
   ]
 
   return (
@@ -158,10 +158,10 @@ function About({ user }: { user: GitHubUser | null }) {
         <div className="about-grid">
           <div className="about-text">
             <p>
-              {user?.bio || 'Passionate full-stack developer with experience in modern web technologies, machine learning, and blockchain development. I love creating innovative solutions and contributing to open source projects.'}
+              {user?.bio || 'Dedicated and self-motivated professional with more than 5 years of experience in Engineering with a background in travel and customer retention. Proficient with JavaScript, TypeScript, React.js, CSS frameworks, GraphQL, REST APIs, and Relay with strong communication and analytical thinking skills.'}
             </p>
             <p>
-              Currently working at <strong>@kiwicom</strong> and building exciting projects that solve real-world problems.
+              Currently working as a <strong>Software Engineer at Kiwi.com</strong>, building innovative travel technology solutions that help millions of travelers worldwide.
             </p>
             <div className="skills">
               <h3>Technologies & Skills</h3>
@@ -292,15 +292,13 @@ function Contact({ user }: { user: GitHubUser | null }) {
             <span className="icon">📧</span>
             Email
           </a>
-          <a href="https://linkedin.com/in/adam-olser" target="_blank" rel="noopener noreferrer" className="contact-link">
+          <a href="https://www.linkedin.com/in/adam-ol%C5%A1er-633027142/" target="_blank" rel="noopener noreferrer" className="contact-link">
             <span className="icon">💼</span>
             LinkedIn
           </a>
         </div>
         
-        {user?.location && (
-          <p className="location">📍 Based in {user.location}</p>
-        )}
+        <p className="location">📍 Based in {user?.location || 'Brno, Czech Republic'}</p>
       </div>
     </section>
   )
