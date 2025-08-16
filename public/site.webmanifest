@@ -1,0 +1,17 @@
+{
+  "name": "Adam Olšer - Portfolio",
+  "short_name": "Adam Olšer",
+  "description": "Frontend-focused Software Engineer at Kiwi.com specializing in React, TypeScript, and authentication systems",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#667eea",
+  "background_color": "#0f0f0f",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
