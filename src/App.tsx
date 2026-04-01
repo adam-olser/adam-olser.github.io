@@ -298,6 +298,16 @@ function ProjectCard({
     );
   };
 
+  const getProjectHomepage = (repo: Repository) => {
+    const forced: Record<string, string> = {
+      "react-music-player": "https://react-music-player.netlify.app",
+      "qr-studio": "https://qr-studio.adam-olser.dev",
+    };
+    return repo.homepage || forced[repo.name] || "";
+  };
+
+  const projectHomepage = getProjectHomepage(repo);
+
   return (
     <div className={`project-card ${featured ? "featured" : ""}`}>
       <div className="project-header">
@@ -336,9 +346,9 @@ function ProjectCard({
         >
           View Code
         </a>
-        {repo.homepage && (
+        {projectHomepage && (
           <a
-            href={repo.homepage}
+            href={projectHomepage}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"

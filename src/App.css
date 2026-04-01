@@ -423,7 +423,10 @@ h4 {
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
   transition: all 0.3s ease;
-  height: fit-content;
+  height: 100%;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -431,9 +434,13 @@ h4 {
   box-shadow: var(--shadow-lg);
 }
 
-.project-card.featured {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  border: 2px solid var(--primary);
+.projects-grid,
+.projects-grid.featured {
+  align-items: stretch;
+}
+
+.project-stats {
+  display: none;
 }
 
 .project-header {
@@ -448,12 +455,11 @@ h4 {
   color: var(--text-primary);
 }
 
-.project-stats {
-  display: flex;
-  gap: 1rem;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+/* hide old rating line if component uses it, while keeping inconsistent fallback safe */
+.project-stats--fallback {
+  display: none;
 }
+
 
 .project-description {
   color: var(--text-secondary);
@@ -462,10 +468,7 @@ h4 {
 }
 
 .project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  display: none !important;
 }
 
 .tech-tag {
