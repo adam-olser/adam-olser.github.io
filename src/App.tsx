@@ -286,8 +286,10 @@ function ProjectCard({
 }) {
   const getProjectDescription = (name: string, description: string | null) => {
     const descriptions: Record<string, string> = {
-      "ganba-hero": "Japanese language learning app with spaced repetition - React Native + Web (PWA)",
-      "qr-studio": "QR code generator with advanced styling and logo integration",
+      "ganba-hero":
+        "Japanese language learning app with spaced repetition - React Native + Web (PWA)",
+      "qr-studio":
+        "QR code generator with advanced styling and logo integration",
       "react-music-player": "Modern music player built with React",
       "dapp-chat": "Decentralized chat application",
     };
@@ -369,7 +371,7 @@ function Contact({ user }: { user: GitHubUser | null }) {
             <span className="icon">🐙</span>
             GitHub
           </a>
-          <a href="mailto:contact@adamolser.dev" className="contact-link">
+          <a href="mailto:adam.olser@gmail" className="contact-link">
             <span className="icon">📧</span>
             Email
           </a>
