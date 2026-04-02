@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import confetti from "canvas-confetti";
 import "./App.css";
 
 interface Repository {
@@ -111,24 +112,86 @@ function App() {
 }
 
 function Header({ user }: { user: GitHubUser | null }) {
-  const [confettiTriggered, setConfettiTriggered] = useState(false);
-
   const handleProfileClick = () => {
-    setConfettiTriggered(true);
-    setTimeout(() => setConfettiTriggered(false), 800);
+    const count = 200;
+    const defaults = { origin: { y: 0.7 } };
+
+    function fire(particleRatio: number, opts: any) {
+      confetti({
+        ...defaults,
+        ...opts,
+        particleCount: Math.floor(count * particleRatio),
+      });
+    }
+
+    fire(0.25, {
+      spread: 26,
+      startVelocity: 55,
+      colors: [
+        "#667eea",
+        "#764ba2",
+        "#f093fb",
+        "#FF6B6B",
+        "#4ECDC4",
+        "#45B7D1",
+      ],
+    });
+    fire(0.2, {
+      spread: 60,
+      colors: [
+        "#667eea",
+        "#764ba2",
+        "#f093fb",
+        "#FF6B6B",
+        "#4ECDC4",
+        "#45B7D1",
+      ],
+    });
+    fire(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+      colors: [
+        "#667eea",
+        "#764ba2",
+        "#f093fb",
+        "#FF6B6B",
+        "#4ECDC4",
+        "#45B7D1",
+      ],
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+      colors: [
+        "#667eea",
+        "#764ba2",
+        "#f093fb",
+        "#FF6B6B",
+        "#4ECDC4",
+        "#45B7D1",
+      ],
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 45,
+      colors: [
+        "#667eea",
+        "#764ba2",
+        "#f093fb",
+        "#FF6B6B",
+        "#4ECDC4",
+        "#45B7D1",
+      ],
+    });
   };
 
   return (
     <header className="hero">
       <div className="hero-content">
-        <div
-          className={`profile-image ${confettiTriggered ? "confetti-active" : ""}`}
-          onClick={handleProfileClick}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => e.key === "Enter" && handleProfileClick()}
-          aria-label="Click for confetti effect"
-        >
+        <div className="profile-image clickable" onClick={handleProfileClick}>
           <img src={user?.avatar_url || "/header.jpg"} alt="Adam Olser" />
         </div>
         <h1>Adam Olser</h1>
