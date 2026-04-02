@@ -111,10 +111,24 @@ function App() {
 }
 
 function Header({ user }: { user: GitHubUser | null }) {
+  const [confettiTriggered, setConfettiTriggered] = useState(false);
+
+  const handleProfileClick = () => {
+    setConfettiTriggered(true);
+    setTimeout(() => setConfettiTriggered(false), 800);
+  };
+
   return (
     <header className="hero">
       <div className="hero-content">
-        <div className="profile-image">
+        <div
+          className={`profile-image ${confettiTriggered ? "confetti-active" : ""}`}
+          onClick={handleProfileClick}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === "Enter" && handleProfileClick()}
+          aria-label="Click for confetti effect"
+        >
           <img src={user?.avatar_url || "/header.jpg"} alt="Adam Olser" />
         </div>
         <h1>Adam Olser</h1>
@@ -148,7 +162,15 @@ function Header({ user }: { user: GitHubUser | null }) {
         </div>
       </div>
       <div className="scroll-indicator">
-        <div className="scroll-arrow"></div>
+        <a
+          href="#projects"
+          className="scroll-arrow"
+          aria-label="Scroll to projects"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+          }}
+        />
       </div>
     </header>
   );
