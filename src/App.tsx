@@ -111,12 +111,14 @@ function App() {
   );
 }
 
+type ConfettiOptions = Parameters<typeof confetti>[0];
+
 function Header({ user }: { user: GitHubUser | null }) {
   const handleProfileClick = () => {
     const count = 200;
     const defaults = { origin: { y: 0.7 } };
 
-    function fire(particleRatio: number, opts: any) {
+    function fire(particleRatio: number, opts: ConfettiOptions) {
       confetti({
         ...defaults,
         ...opts,
