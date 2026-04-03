@@ -1,21 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  CSS custom properties for the Editorial Intelligence design system.
+  Values are stored as raw RGB channels (no rgb() wrapper) so Tailwind's
+  opacity modifier syntax — e.g. bg-primary/10 — works correctly.
+*/
 
 :root {
+  /* ── Luminous Curator (light mode) ─────────────────────────────── */
+  --color-primary:                   160 32 240;   /* #a020f0 */
+  --color-primary-container:         243 218 255;  /* #f3daff */
+  --color-on-primary:                255 255 255;  /* #ffffff */
+  --color-surface:                   253 251 255;  /* #fdfbff */
+  --color-surface-dim:               19 19 20;     /* #131314 */
+  --color-surface-bright:            255 255 255;  /* #ffffff */
+  --color-surface-container-lowest:  255 255 255;  /* #ffffff */
+  --color-surface-container-low:     245 242 247;  /* #f5f2f7 */
+  --color-surface-container:         240 237 242;  /* #f0edf2 */
+  --color-surface-container-high:    235 231 237;  /* #ebe7ed */
+  --color-surface-container-highest: 229 224 230;  /* #e5e0e6 */
+  --color-surface-variant:           233 224 235;  /* #e9e0eb */
+  --color-on-surface:                28 27 31;     /* #1c1b1f */
+  --color-on-surface-variant:        78 67 85;     /* #4e4355 */
+  --color-background:                253 251 255;  /* #fdfbff */
+  --color-on-background:             28 27 31;     /* #1c1b1f */
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.dark {
+  /* ── Obsidian Intellectual (dark mode) ──────────────────────────── */
+  --color-primary:                   227 181 255;  /* #e3b5ff */
+  --color-primary-container:         160 32 240;   /* #a020f0 */
+  --color-on-primary:                77 0 122;     /* #4d007a */
+  --color-surface:                   19 19 20;     /* #131314 */
+  --color-surface-dim:               19 19 20;     /* #131314 */
+  --color-surface-bright:            58 57 58;     /* #3a393a */
+  --color-surface-container-lowest:  14 14 15;     /* #0e0e0f */
+  --color-surface-container-low:     28 27 28;     /* #1c1b1c */
+  --color-surface-container:         32 31 32;     /* #201f20 */
+  --color-surface-container-high:    42 42 43;     /* #2a2a2b */
+  --color-surface-container-highest: 53 52 54;     /* #353436 */
+  --color-surface-variant:           53 52 54;     /* #353436 */
+  --color-on-surface:                229 226 227;  /* #e5e2e3 */
+  --color-on-surface-variant:        209 193 215;  /* #d1c1d7 */
+  --color-background:                19 19 20;     /* #131314 */
+  --color-on-background:             229 226 227;  /* #e5e2e3 */
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-#root {
-  min-height: 100vh;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-on-surface));
 }
 
-/* Remove default button styles */
-button {
-  all: unset;
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+}
+
+#root {
+  min-height: 100vh;
 }
