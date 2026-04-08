@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Repository } from '../hooks/useGitHub';
 
 interface WorkProps {
@@ -35,9 +36,15 @@ function screenshotUrl(url: string) {
 }
 
 function ProjectCard({ repo, offset }: { repo: Repository; offset: boolean }) {
+  const [imgFailed, setImgFailed] = useState(false);
   const description = DESCRIPTIONS[repo.name] || repo.description || 'A project built with care.';
   const homepage = repo.homepage || FORCED_HOMEPAGES[repo.name] || '';
   const primaryHref = homepage || repo.html_url;
+  const initials = toTitle(repo.name)
+    .split(' ')
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('');
 
   return (
     <div className={`group ${offset ? 'sm:mt-24' : ''}`}>
@@ -48,12 +55,20 @@ function ProjectCard({ repo, offset }: { repo: Repository; offset: boolean }) {
         rel="noopener noreferrer"
         className="block relative aspect-[16/10] bg-surface-container rounded-xl overflow-hidden mb-8 transition-all duration-500 group-hover:scale-[0.98]"
       >
-        <img
-          src={homepage ? screenshotUrl(homepage) : `https://opengraph.githubassets.com/1/adam-olser/${repo.name}`}
-          alt={`${toTitle(repo.name)} preview`}
-          className="w-full h-full object-cover object-top"
-          loading="lazy"
-        />
+        {imgFailed ? (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-surface-container to-primary-container/10 select-none">
+            <span className="text-4xl font-black tracking-tighter text-primary/50">{initials}</span>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">{toTitle(repo.name)}</span>
+          </div>
+        ) : (
+          <img
+            src={homepage ? screenshotUrl(homepage) : `https://opengraph.githubassets.com/1/adam-olser/${repo.name}`}
+            alt={`${toTitle(repo.name)} preview`}
+            className="w-full h-full object-cover object-top"
+            loading="lazy"
+            onError={() => setImgFailed(true)}
+          />
+        )}
         {/* Amethyst overlay on hover */}
         <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         {/* Corner arrow */}
