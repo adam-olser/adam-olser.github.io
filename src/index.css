@@ -9,23 +9,23 @@
 */
 
 :root {
-  /* ── Luminous Curator (light mode) ─────────────────────────────── */
-  --color-primary:                   160 32 240;   /* #a020f0 */
-  --color-primary-container:         243 218 255;  /* #f3daff */
+  /* ── Acid Cyan (light mode) ─────────────────────────────── */
+  --color-primary:                   0 140 110;    /* #008c6e deep teal */
+  --color-primary-container:         180 255 235;  /* #b4ffeb light cyan */
   --color-on-primary:                255 255 255;  /* #ffffff */
-  --color-surface:                   253 251 255;  /* #fdfbff */
-  --color-surface-dim:               19 19 20;     /* #131314 */
+  --color-surface:                   240 252 250;  /* #f0fcfa cool off-white */
+  --color-surface-dim:               210 240 236;  /* #d2f0ec */
   --color-surface-bright:            255 255 255;  /* #ffffff */
   --color-surface-container-lowest:  255 255 255;  /* #ffffff */
-  --color-surface-container-low:     245 242 247;  /* #f5f2f7 */
-  --color-surface-container:         240 237 242;  /* #f0edf2 */
-  --color-surface-container-high:    235 231 237;  /* #ebe7ed */
-  --color-surface-container-highest: 229 224 230;  /* #e5e0e6 */
-  --color-surface-variant:           233 224 235;  /* #e9e0eb */
-  --color-on-surface:                28 27 31;     /* #1c1b1f */
-  --color-on-surface-variant:        78 67 85;     /* #4e4355 */
-  --color-background:                253 251 255;  /* #fdfbff */
-  --color-on-background:             28 27 31;     /* #1c1b1f */
+  --color-surface-container-low:     232 248 244;  /* #e8f8f4 */
+  --color-surface-container:         220 244 240;  /* #dcf4f0 */
+  --color-surface-container-high:    205 238 232;  /* #cdeee8 */
+  --color-surface-container-highest: 190 232 224;  /* #bee8e0 */
+  --color-surface-variant:           190 232 224;  /* #bee8e0 */
+  --color-on-surface:                4 30 26;      /* #041e1a deep teal-black */
+  --color-on-surface-variant:        20 80 68;     /* #145044 */
+  --color-background:                240 252 250;  /* #f0fcfa */
+  --color-on-background:             4 30 26;      /* #041e1a */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -34,23 +34,23 @@
 }
 
 .dark {
-  /* ── Obsidian Intellectual (dark mode) ──────────────────────────── */
-  --color-primary:                   227 181 255;  /* #e3b5ff */
-  --color-primary-container:         160 32 240;   /* #a020f0 */
-  --color-on-primary:                77 0 122;     /* #4d007a */
-  --color-surface:                   19 19 20;     /* #131314 */
-  --color-surface-dim:               19 19 20;     /* #131314 */
-  --color-surface-bright:            58 57 58;     /* #3a393a */
-  --color-surface-container-lowest:  14 14 15;     /* #0e0e0f */
-  --color-surface-container-low:     28 27 28;     /* #1c1b1c */
-  --color-surface-container:         32 31 32;     /* #201f20 */
-  --color-surface-container-high:    42 42 43;     /* #2a2a2b */
-  --color-surface-container-highest: 53 52 54;     /* #353436 */
-  --color-surface-variant:           53 52 54;     /* #353436 */
-  --color-on-surface:                229 226 227;  /* #e5e2e3 */
-  --color-on-surface-variant:        209 193 215;  /* #d1c1d7 */
-  --color-background:                19 19 20;     /* #131314 */
-  --color-on-background:             229 226 227;  /* #e5e2e3 */
+  /* ── Acid Cyan ──────────────────────────── */
+  --color-primary:                   0 255 200;    /* #00FFC8 acid cyan */
+  --color-primary-container:         0 50 40;      /* dark cyan container */
+  --color-on-primary:                0 0 0;        /* #000000 */
+  --color-surface:                   4 8 8;        /* #040808 deep teal-black */
+  --color-surface-dim:               4 8 8;        /* #040808 */
+  --color-surface-bright:            12 28 28;     /* #0c1c1c */
+  --color-surface-container-lowest:  2 5 5;        /* #020505 */
+  --color-surface-container-low:     8 18 18;      /* #081212 */
+  --color-surface-container:         10 22 22;     /* #0a1616 */
+  --color-surface-container-high:    14 30 30;     /* #0e1e1e */
+  --color-surface-container-highest: 20 40 40;     /* #142828 */
+  --color-surface-variant:           20 40 40;     /* #142828 */
+  --color-on-surface:                210 255 250;  /* #d2fffa */
+  --color-on-surface-variant:        120 200 190;  /* #78c8be */
+  --color-background:                4 8 8;        /* #040808 */
+  --color-on-background:             210 255 250;  /* #d2fffa */
 }
 
 html {
