@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import confetti from 'canvas-confetti';
 import type { GitHubUser } from '../hooks/useGitHub';
-import { useShake } from '../hooks/useShake';
+import { useShake, requestMotionPermission } from '../hooks/useShake';
 
 interface HeroProps {
   user: GitHubUser | null;
@@ -47,7 +47,7 @@ export function Hero({ user }: HeroProps) {
 
       {/* Mobile avatar — absolute top-right, hidden on md+ */}
       <button
-        onClick={fireConfetti}
+        onClick={() => { requestMotionPermission(); fireConfetti(); }}
         aria-label="Click for a surprise"
         className="md:hidden absolute top-4 right-8 w-16 h-16 rounded-full overflow-hidden border-2 border-primary/60 shadow-md cursor-pointer hover:scale-105 transition-all duration-300 active:scale-95 focus:outline-none z-20"
       >
