@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import confetti from 'canvas-confetti';
 import type { GitHubUser } from '../hooks/useGitHub';
 import { useShake, requestMotionPermission } from '../hooks/useShake';
+import { DraggableMascot } from './DraggableMascot';
 
 interface HeroProps {
   user: GitHubUser | null;
@@ -103,8 +104,8 @@ export function Hero({ user }: HeroProps) {
           </div>
         </div>
 
-        {/* Right: profile image — hidden on mobile, visible from md up */}
-        <div className="hidden md:flex items-center justify-center">
+        {/* Right: profile image + mascot — hidden on mobile, visible from md up */}
+        <div className="hidden md:flex flex-col items-center justify-center gap-10">
           <button
             onClick={fireConfetti}
             aria-label="Click for a surprise"
@@ -116,6 +117,7 @@ export function Hero({ user }: HeroProps) {
               className="w-full h-full object-cover"
             />
           </button>
+          <DraggableMascot />
         </div>
       </div>
     </section>
