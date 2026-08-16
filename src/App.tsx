@@ -227,8 +227,7 @@ function Header({ user }: { user: GitHubUser | null }) {
         </div>
         <h1>Adam Olšer</h1>
         <p className="tagline">
-          Building travel experiences for millions • Frontend Engineer at
-          Kiwi.com
+          Software Engineer • React, TypeScript, Next.js
         </p>
         <div className="stats">
           <div className="stat">
@@ -352,23 +351,23 @@ function About({
         skills: [
           {
             name: "JavaScript",
-            years: 6,
+            years: 7,
             level: "Expert",
             fromRepo: repoLanguages.has("JavaScript"),
           },
           {
             name: "TypeScript",
-            years: 5,
+            years: 7,
             level: "Advanced",
             fromRepo: repoLanguages.has("TypeScript"),
           },
           {
             name: "React.js",
-            years: 6,
+            years: 7,
             level: "Expert",
             fromRepo: repoLanguages.has("React.js"),
           },
-          { name: "Next.js", years: 3, level: "Advanced", fromRepo: false },
+          { name: "Next.js", years: 4, level: "Advanced", fromRepo: false },
           {
             name: "CSS/SCSS",
             years: 6,
@@ -465,6 +464,12 @@ function About({
               repoLanguages.has("AWS") || repoLanguages.has("Google Cloud"),
           },
           {
+            name: "Terraform/OpenTofu",
+            years: 1,
+            level: "Intermediate",
+            fromRepo: repoLanguages.has("HCL"),
+          },
+          {
             name: "Docker",
             years: 3,
             level: "Advanced",
@@ -518,19 +523,18 @@ function About({
           <div className="about-text">
             <p>
               {user?.bio ||
-                "I'm a frontend engineer who gets excited about solving complex problems at scale. Over 6+ years at Kiwi.com, I've built authentication systems serving millions of travelers, architected payment flows that process thousands of bookings daily, and mentored junior developers who've become technical leaders themselves."}
+                "I'm a software engineer who gets excited about solving complex problems at scale. Over 7+ years at Kiwi.com, I built authentication systems serving millions of travelers, architected payment flows, and mentored developers who became technical leaders themselves."}
             </p>
             <p>
-              Currently working as a{" "}
-              <strong>Software Engineer at Kiwi.com</strong> in Barcelona, where
-              I lead development of critical user-facing systems including
+              For 7+ years at <strong>Kiwi.com</strong> in Barcelona, I led
+              development of critical user-facing systems including
               authentication APIs, payment processing, and security
               implementations.
             </p>
             <p>
               When I'm not debugging React components or optimizing GraphQL
-              queries, you'll find me exploring Tokyo's tech scene or
-              contributing to open source projects.
+              queries, you'll find me contributing to open source projects or
+              exploring new frameworks.
             </p>
             <div className="skills">
               <h3>Technologies & Skills</h3>
@@ -592,9 +596,8 @@ function About({
 function Projects({ repositories }: { repositories: Repository[] }) {
   const featuredProjects = [
     "qr-studio",
-    "smart-brain",
-    "react-music-player",
-    "dapp-chat",
+    "ganba-hero",
+    "qr-studio-spacelift-demo",
   ];
 
   const featured = repositories.filter((repo) =>
@@ -645,9 +648,10 @@ function ProjectCard({
     const descriptions: Record<string, string> = {
       "qr-studio":
         "QR code generator with advanced styling and logo integration",
-      "smart-brain": "AI-powered face detection app with user authentication",
-      "react-music-player": "Modern music player built with React",
-      "dapp-chat": "Decentralized chat application",
+      "ganba-hero":
+        "Cross-platform Japanese learning app with spaced repetition (SM-2), built solo with React Native, Firebase, and RevenueCat",
+      "qr-studio-spacelift-demo":
+        "Infrastructure-as-Code workflow with OpenTofu and Spacelift, including policy-as-code and drift detection",
     };
     return (
       descriptions[name] || description || "A cool project built with passion"
@@ -657,9 +661,8 @@ function ProjectCard({
   const getProjectCategory = (name: string) => {
     const categories: Record<string, string> = {
       "qr-studio": "Web App",
-      "smart-brain": "AI/ML Project",
-      "react-music-player": "Media App",
-      "dapp-chat": "Blockchain",
+      "ganba-hero": "Mobile App",
+      "qr-studio-spacelift-demo": "Infrastructure",
       RandomAirportPicker: "Utility Tool",
       "SW DB": "Database",
       "QA Academy": "Education",
@@ -687,9 +690,7 @@ function ProjectCard({
     // Known project URLs - update these with actual deployed URLs
     const knownUrls: Record<string, string> = {
       "qr-studio": "https://adam-olser.github.io/qr-studio",
-      "smart-brain": "https://adam-olser.github.io/smart-brain",
-      "react-music-player": "https://adam-olser.github.io/react-music-player",
-      "dapp-chat": "https://adam-olser.github.io/dapp-chat",
+      "ganba-hero": "https://adam-olser.github.io/ganba-hero",
       "adam-olser.github.io": "https://adam-olser.github.io",
     };
 
