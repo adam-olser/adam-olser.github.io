@@ -65,7 +65,7 @@ export function Hero({ user }: HeroProps) {
             Adam <span className="text-primary">Olšer</span>
           </h1>
           <p className="text-on-surface-variant text-lg max-w-md mb-8 leading-relaxed">
-            Software engineer at Kiwi.com.{' '}
+            Software engineer.{' '}
             <button
               onClick={handleYearsClick}
               aria-label="Years of experience"
