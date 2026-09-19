@@ -227,8 +227,7 @@ function Header({ user }: { user: GitHubUser | null }) {
         </div>
         <h1>Adam Olšer</h1>
         <p className="tagline">
-          Building travel experiences for millions • Frontend Engineer at
-          Kiwi.com
+          Software Engineer · Auth & payments for millions of users · ex-Kiwi.com
         </p>
         <div className="stats">
           <div className="stat">
@@ -352,32 +351,38 @@ function About({
         skills: [
           {
             name: "JavaScript",
-            years: 6,
+            years: 7,
             level: "Expert",
             fromRepo: repoLanguages.has("JavaScript"),
           },
           {
             name: "TypeScript",
-            years: 5,
+            years: 6,
             level: "Advanced",
             fromRepo: repoLanguages.has("TypeScript"),
           },
           {
             name: "React.js",
-            years: 6,
+            years: 7,
             level: "Expert",
             fromRepo: repoLanguages.has("React.js"),
           },
           { name: "Next.js", years: 3, level: "Advanced", fromRepo: false },
           {
             name: "CSS/SCSS",
-            years: 6,
+            years: 7,
             level: "Advanced",
             fromRepo: repoLanguages.has("CSS") || repoLanguages.has("SCSS"),
           },
           {
-            name: "Jest/Cypress",
+            name: "Cypress/Vitest/RTL",
             years: 4,
+            level: "Advanced",
+            fromRepo: false,
+          },
+          {
+            name: "XState",
+            years: 3,
             level: "Advanced",
             fromRepo: false,
           },
@@ -393,19 +398,13 @@ function About({
             level: "Intermediate",
             fromRepo: false,
           },
-          {
-            name: "Storybook",
-            years: 2,
-            level: "Intermediate",
-            fromRepo: false,
-          },
         ],
       },
       {
         category: "Backend & APIs",
         skills: [
           {
-            name: "GraphQL",
+            name: "GraphQL/Relay",
             years: 4,
             level: "Advanced",
             fromRepo: repoLanguages.has("GraphQL"),
@@ -518,19 +517,18 @@ function About({
           <div className="about-text">
             <p>
               {user?.bio ||
-                "I'm a frontend engineer who gets excited about solving complex problems at scale. Over 6+ years at Kiwi.com, I've built authentication systems serving millions of travelers, architected payment flows that process thousands of bookings daily, and mentored junior developers who've become technical leaders themselves."}
+                "Software engineer with 7+ years of experience. At Kiwi.com I built authentication and payment infrastructure for millions of users—passwordless auth, Apple/Google Pay flows, React 19 and Next.js 15 migrations across 5+ frontend projects—and mentored developers who became technical leaders."}
             </p>
             <p>
-              Currently working as a{" "}
-              <strong>Software Engineer at Kiwi.com</strong> in Barcelona, where
-              I lead development of critical user-facing systems including
-              authentication APIs, payment processing, and security
-              implementations.
+              Previously a <strong>Software Engineer at Kiwi.com</strong> in
+              Barcelona, where I owned authentication and payment systems
+              end-to-end—from centralized auth packages consumed by 5+ projects
+              to XState-driven auth flows and Datadog/PagerDuty production ops.
             </p>
             <p>
-              When I'm not debugging React components or optimizing GraphQL
-              queries, you'll find me exploring Tokyo's tech scene or
-              contributing to open source projects.
+              When I'm not building things, you'll find me exploring Barcelona
+              or working on side projects like{" "}
+              <a href="https://adam-olser.github.io/ganba-hero/" target="_blank" rel="noopener noreferrer">Ganba Hero</a>.
             </p>
             <div className="skills">
               <h3>Technologies & Skills</h3>
@@ -592,9 +590,9 @@ function About({
 function Projects({ repositories }: { repositories: Repository[] }) {
   const featuredProjects = [
     "qr-studio",
-    "smart-brain",
+    "ganba-hero",
+    "capy-onsen",
     "react-music-player",
-    "dapp-chat",
   ];
 
   const featured = repositories.filter((repo) =>
@@ -644,8 +642,11 @@ function ProjectCard({
   const getProjectDescription = (name: string, description: string | null) => {
     const descriptions: Record<string, string> = {
       "qr-studio":
-        "QR code generator with advanced styling and logo integration",
-      "smart-brain": "AI-powered face detection app with user authentication",
+        "Full-stack QR code generator: Python/FastAPI backend with Redis rate limiting, React + TypeScript/Vite frontend with live style customization",
+      "ganba-hero":
+        "Japanese learning PWA with SM-2 spaced repetition, Firebase backend, streak tracking, XP progression, and RevenueCat payments",
+      "capy-onsen":
+        "Pixel-art capybara onsen with six mini-games: memory match, bath bubbles, orange catch, capy run, capy stack, and Wordlebara",
       "react-music-player": "Modern music player built with React",
       "dapp-chat": "Decentralized chat application",
     };
@@ -657,7 +658,8 @@ function ProjectCard({
   const getProjectCategory = (name: string) => {
     const categories: Record<string, string> = {
       "qr-studio": "Web App",
-      "smart-brain": "AI/ML Project",
+      "ganba-hero": "Language Learning",
+      "capy-onsen": "Game / Pixel Art",
       "react-music-player": "Media App",
       "dapp-chat": "Blockchain",
       RandomAirportPicker: "Utility Tool",
@@ -687,7 +689,7 @@ function ProjectCard({
     // Known project URLs - update these with actual deployed URLs
     const knownUrls: Record<string, string> = {
       "qr-studio": "https://adam-olser.github.io/qr-studio",
-      "smart-brain": "https://adam-olser.github.io/smart-brain",
+      "ganba-hero": "https://adam-olser.github.io/ganba-hero/",
       "react-music-player": "https://adam-olser.github.io/react-music-player",
       "dapp-chat": "https://adam-olser.github.io/dapp-chat",
       "adam-olser.github.io": "https://adam-olser.github.io",
