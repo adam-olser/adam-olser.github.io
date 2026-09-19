@@ -6,13 +6,12 @@ interface WorkProps {
   error: boolean;
 }
 
-const FEATURED = ['ganba-hero', 'qr-studio', 'react-music-player', 'dapp-chat'];
+const FEATURED = ['ganba-hero', 'qr-studio', 'qr-studio-spacelift-demo', 'nextjs-blog'];
 
 const DESCRIPTIONS: Record<string, string> = {
   'ganba-hero':           'Japanese language learning app with spaced repetition — React Native + Web (PWA)',
   'qr-studio':            'QR code generator with advanced styling, logo integration, and export options',
-  'react-music-player':   'Minimal music player built with React — clean UI, keyboard controls, playlist support',
-  'dapp-chat':            'Decentralized chat application built on Ethereum — real-time, censorship-resistant',
+  'qr-studio-spacelift-demo': 'Infrastructure-as-Code workflow with OpenTofu and Spacelift, including policy-as-code and drift detection',
   'nextjs-blog':          'Static blog built with Next.js — SSG, file-based routing, and markdown content pipeline',
   'react-web':            'React fundamentals project — component composition, state management, and API integration',
   'react-redux-games-db': 'Game discovery app using Redux and the RAWG API — real-time search and filtering',
