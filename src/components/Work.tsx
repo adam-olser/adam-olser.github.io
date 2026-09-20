@@ -13,6 +13,7 @@ const DESCRIPTIONS: Record<string, string> = {
   'qr-studio':            'Full-stack QR code generator: Python/FastAPI backend with Redis rate limiting, React + TypeScript/Vite frontend',
   'ganba-hero':           'Japanese learning PWA with SM-2 spaced repetition, Firebase backend, streak tracking, XP progression, and RevenueCat payments',
   'react-music-player':   'Minimal music player built with React — clean UI, keyboard controls, playlist support',
+  'drift-board':          'Real-time collaborative kanban board — no account needed, WebSocket sync, priority filters',
   'nextjs-blog':          'Static blog built with Next.js — SSG, file-based routing, and markdown content pipeline',
   'react-web':            'React fundamentals project — component composition, state management, and API integration',
   'react-redux-games-db': 'Game discovery app using Redux and the RAWG API — real-time search and filtering',
@@ -25,6 +26,7 @@ const DESCRIPTIONS: Record<string, string> = {
 const FORCED_HOMEPAGES: Record<string, string> = {
   'capy-onsen': 'https://adam-olser.github.io/capy-onsen/',
   'ganba-hero': 'https://adam-olser.github.io/ganba-hero/',
+  'drift-board': 'https://driftboard-4yjg.onrender.com/',
   'nextjs-blog': 'https://nextjs-blog.adam-olser.vercel.app',
 };
 
