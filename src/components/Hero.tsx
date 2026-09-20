@@ -75,7 +75,7 @@ export function Hero({ user }: HeroProps) {
             >
               {years}+
             </button>
-            {' '}years building authentication and user infrastructure for millions of travellers.
+            {' '}years building auth and payment infrastructure for millions of users.
           </p>
           <div className="flex flex-wrap gap-2 mb-10">
             {STACK.map((t) => (

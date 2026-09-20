@@ -6,12 +6,13 @@ interface WorkProps {
   error: boolean;
 }
 
-const FEATURED = ['ganba-hero', 'qr-studio', 'qr-studio-spacelift-demo', 'nextjs-blog'];
+const FEATURED = ['capy-onsen', 'qr-studio', 'ganba-hero', 'react-music-player'];
 
 const DESCRIPTIONS: Record<string, string> = {
-  'ganba-hero':           'Japanese language learning app with spaced repetition — React Native + Web (PWA)',
-  'qr-studio':            'QR code generator with advanced styling, logo integration, and export options',
-  'qr-studio-spacelift-demo': 'Infrastructure-as-Code workflow with OpenTofu and Spacelift, including policy-as-code and drift detection',
+  'capy-onsen':           'Pixel-art capybara onsen with six mini-games: memory match, bath bubbles, orange catch, capy run, capy stack, and Wordlebara',
+  'qr-studio':            'Full-stack QR code generator: Python/FastAPI backend with Redis rate limiting, React + TypeScript/Vite frontend',
+  'ganba-hero':           'Japanese learning PWA with SM-2 spaced repetition, Firebase backend, streak tracking, XP progression, and RevenueCat payments',
+  'react-music-player':   'Minimal music player built with React — clean UI, keyboard controls, playlist support',
   'nextjs-blog':          'Static blog built with Next.js — SSG, file-based routing, and markdown content pipeline',
   'react-web':            'React fundamentals project — component composition, state management, and API integration',
   'react-redux-games-db': 'Game discovery app using Redux and the RAWG API — real-time search and filtering',
@@ -22,8 +23,14 @@ const DESCRIPTIONS: Record<string, string> = {
 
 // Fixes for repos where the GitHub homepage field is missing or malformed
 const FORCED_HOMEPAGES: Record<string, string> = {
+  'capy-onsen': 'https://adam-olser.github.io/capy-onsen/',
   'ganba-hero': 'https://adam-olser.github.io/ganba-hero/',
   'nextjs-blog': 'https://nextjs-blog.adam-olser.vercel.app',
+};
+
+// Static previews for repos where Microlink can't get past an auth/loading screen
+const IMAGE_OVERRIDES: Record<string, string> = {
+  'ganba-hero': '/previews/ganba-hero.webp',
 };
 
 function toTitle(name: string) {
@@ -61,7 +68,7 @@ function ProjectCard({ repo, offset }: { repo: Repository; offset: boolean }) {
           </div>
         ) : (
           <img
-            src={homepage ? screenshotUrl(homepage) : `https://opengraph.githubassets.com/1/adam-olser/${repo.name}`}
+            src={IMAGE_OVERRIDES[repo.name] ?? (homepage ? screenshotUrl(homepage) : `https://opengraph.githubassets.com/1/adam-olser/${repo.name}`)}
             alt={`${toTitle(repo.name)} preview`}
             className="w-full h-full object-cover object-top"
             loading="lazy"
