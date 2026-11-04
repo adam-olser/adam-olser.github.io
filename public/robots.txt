@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://adam-olser.github.io/sitemap.xml

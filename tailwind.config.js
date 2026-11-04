@@ -33,17 +33,15 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       borderRadius: {
         amethyst: '8px',
       },
       boxShadow: {
-        'glow': '0px 12px 32px rgba(160, 32, 240, 0.15)',
-        'glow-lg': '0 24px 48px -12px rgba(160, 32, 240, 0.25)',
+        'glow': '0px 12px 32px rgb(var(--color-primary) / 0.25)',
       },
       letterSpacing: {
-        tightest: '-0.05em',
-        tighter: '-0.04em',
         tight: '-0.02em',
       },
     },

@@ -1,7 +1,9 @@
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '../links';
+
 const links = [
-  { label: 'GitHub',   href: 'https://github.com/adam-olser' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/adam-olser' },
-  { label: 'Email',    href: 'mailto:adam.olser@gmail.com' },
+  { label: 'GitHub',   href: GITHUB_URL },
+  { label: 'LinkedIn', href: LINKEDIN_URL },
+  { label: 'Email',    href: `mailto:${EMAIL}` },
 ];
 
 export function Footer() {

@@ -2,14 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="apple-touch-icon" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://adam-olser.github.io/" />
+    <meta name="theme-color" content="#121317" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <!-- Non-blocking: preload as style, apply on load; system fonts show meanwhile -->
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_tree,alternate_email,check_circle,close,code,dark_mode,deployed_code,draw,light_mode,menu,monitoring,science,share&display=block" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" /></noscript>
     <!-- Theme init: apply dark class before React renders to prevent flash -->
     <script>
       (function () {
@@ -22,22 +26,28 @@
     </script>
     
     <!-- Meta tags for SEO and social sharing -->
-    <meta name="description" content="Adam Olser — Senior Frontend Engineer specialising in React, TypeScript, and Next.js. 7+ years building authentication and payment systems for millions of users." />
-    <meta name="keywords" content="Adam Olser, Frontend Engineer, React, TypeScript, Next.js, GraphQL, Authentication, Payment Systems" />
+    <meta name="description" content="Adam Olšer, software engineer in Barcelona working with React, TypeScript, Next.js and GraphQL. I build software that people use every day and rarely have to think about." />
+    <meta name="keywords" content="Adam Olšer, Software Engineer, Frontend Engineer, React, TypeScript, Next.js, GraphQL" />
     <meta name="author" content="Adam Olser" />
 
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Adam Olser — Senior Frontend Engineer" />
-    <meta property="og:description" content="7+ years building authentication and payment platforms for millions of users. React, TypeScript, Next.js specialist." />
+    <meta property="og:title" content="Adam Olšer, Software Engineer" />
+    <meta property="og:description" content="React, TypeScript and Next.js engineer in Barcelona. I build software that people use every day and rarely have to think about." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://adam-olser.github.io" />
+    <meta property="og:url" content="https://adam-olser.github.io/" />
+    <meta property="og:image" content="https://adam-olser.github.io/previews/og.jpg" />
+    <meta name="twitter:image" content="https://adam-olser.github.io/previews/og.jpg" />
 
     <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Adam Olser — Senior Frontend Engineer" />
-    <meta name="twitter:description" content="7+ years building authentication and payment platforms for millions of users. React, TypeScript, Next.js specialist." />
+    <meta name="twitter:title" content="Adam Olšer, Software Engineer" />
+    <meta name="twitter:description" content="React, TypeScript and Next.js engineer in Barcelona. I build software that people use every day and rarely have to think about." />
     
-    <title>Adam Olser - Frontend Engineer Portfolio</title>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Person","name":"Adam Olšer","jobTitle":"Software Engineer","url":"https://adam-olser.github.io/","address":{"@type":"PostalAddress","addressLocality":"Barcelona","addressCountry":"ES"},"sameAs":["https://github.com/adam-olser","https://www.linkedin.com/in/adam-ol%C5%A1er-633027142/"]}
+    </script>
+
+    <title>Adam Olšer, Software Engineer</title>
   </head>
   <body>
     <div id="root"></div>

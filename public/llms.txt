@@ -1,0 +1,14 @@
+# Adam Olšer
+
+> Software engineer based in Barcelona. I build software that people use every day and rarely have to think about.
+
+## Links
+- [Portfolio](https://adam-olser.github.io/): selected work, skills and story
+- [GitHub](https://github.com/adam-olser)
+- [LinkedIn](https://www.linkedin.com/in/adam-ol%C5%A1er-633027142/)
+
+## Selected work
+- [Capy Onsen](https://adam-olser.github.io/capy-onsen/): pixel-art capybara onsen with six mini-games
+- [QR Studio](https://adam-olser.github.io/qr-studio/): QR code generator with a rate-limited backend
+- [Drift Board](https://driftboard-4yjg.onrender.com/): collaborative kanban board that syncs live
+- [React Music Player](https://react-music-app-adamo.netlify.app/): minimal music player with keyboard controls
