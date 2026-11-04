@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 import { useShake, requestMotionPermission } from '../hooks/useShake';
 import { AVATAR_URL, GITHUB_URL } from '../links';
@@ -30,6 +30,12 @@ const REDUCE_MOTION =
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export function Hero() {
+  // Mount the canvas once the page is idle so it never competes with first paint
+  const [canvasReady, setCanvasReady] = useState(false);
+  useEffect(() => {
+    const id = window.setTimeout(() => setCanvasReady(true), 600);
+    return () => clearTimeout(id);
+  }, []);
   const [progress, setProgress] = useState<HeroProgress>({ picked: 0, lines: [] });
 
   const handleShake = useCallback(() => fireConfetti(), []);
@@ -47,7 +53,7 @@ export function Hero() {
           style={{ backgroundImage: 'radial-gradient(rgb(var(--color-on-surface-variant) / 0.5) 1px, transparent 1.5px)', backgroundSize: '28px 28px' }}
         />
         <Suspense fallback={null}>
-          <HeroCanvas onProgress={setProgress} reduceMotion={REDUCE_MOTION} />
+          {canvasReady && <HeroCanvas onProgress={setProgress} reduceMotion={REDUCE_MOTION} />}
         </Suspense>
 
         {/* Portrait, top right */}

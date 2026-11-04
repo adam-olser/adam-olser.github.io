@@ -10,7 +10,7 @@ import { Footer } from "./components/Footer";
 
 function App() {
   const [isDark, setIsDark] = useState(() =>
-    document.documentElement.classList.contains("dark"),
+    typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
   );
 
   useLenis();

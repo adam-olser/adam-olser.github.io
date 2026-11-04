@@ -6,7 +6,8 @@ Personal portfolio — [adam-olser.github.io](https://adam-olser.github.io)
 
 - React 19 + TypeScript + Vite
 - Tailwind CSS v3
-- GitHub REST API (public repos, no auth)
+- three.js for the hero canvas (loaded lazily), Lenis for smooth scrolling
+- Prerendered at build time (`scripts/prerender.mjs`) so crawlers see real HTML
 
 ## Development
 
@@ -17,4 +18,4 @@ npm run dev
 
 ## Deployment
 
-Pushes to `gh-pages` trigger a GitHub Actions build and deploy to GitHub Pages.
+Pushes to `main` trigger a GitHub Actions build and deploy to GitHub Pages.

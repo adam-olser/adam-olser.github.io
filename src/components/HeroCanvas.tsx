@@ -140,7 +140,7 @@ export default function HeroCanvas({ onProgress, reduceMotion }: Props) {
 
     const size = () => {
       const r = stage.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = r.width < 600 ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
       cell = r.width < 600 ? 22 : 28;
       uniforms.uCell.value = cell;
       renderer.setPixelRatio(dpr);
@@ -197,11 +197,13 @@ export default function HeroCanvas({ onProgress, reduceMotion }: Props) {
       if (beepers[bot.y * cols + bot.x]) pickup(bot.x, bot.y);
     };
 
+    let lastFrame = 0;
     const loop = (t: number) => {
       raf = requestAnimationFrame(loop);
-      if (!visible) return;
+      if (!visible || t - lastFrame < 32) return; // ~30fps is plenty for a slow grid
+      lastFrame = t;
       if (t - lastStep > STEP_MS) { lastStep = t; step(); }
-      for (let i = 0; i < heat.length; i++) if (heat[i] > 0) heat[i] = Math.max(0, heat[i] - 0.014);
+      for (let i = 0; i < heat.length; i++) if (heat[i] > 0) heat[i] = Math.max(0, heat[i] - 0.028);
       if (mouseCell) {
         for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
           const gx = mouseCell.x + dx, gy = mouseCell.y + dy;

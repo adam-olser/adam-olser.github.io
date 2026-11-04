@@ -10,9 +10,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_tree,alternate_email,check_circle,close,code,dark_mode,deployed_code,draw,light_mode,menu,monitoring,science,share&display=block" rel="stylesheet" />
+    <!-- Non-blocking: preload as style, apply on load; system fonts show meanwhile -->
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_tree,alternate_email,check_circle,close,code,dark_mode,deployed_code,draw,light_mode,menu,monitoring,science,share&display=block" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" /></noscript>
     <!-- Theme init: apply dark class before React renders to prevent flash -->
     <script>
       (function () {
@@ -25,13 +26,13 @@
     </script>
     
     <!-- Meta tags for SEO and social sharing -->
-    <meta name="description" content="Adam Olšer, software engineer in Barcelona. I build software that people use every day and rarely have to think about." />
+    <meta name="description" content="Adam Olšer, software engineer in Barcelona working with React, TypeScript, Next.js and GraphQL. I build software that people use every day and rarely have to think about." />
     <meta name="keywords" content="Adam Olšer, Software Engineer, Frontend Engineer, React, TypeScript, Next.js, GraphQL" />
     <meta name="author" content="Adam Olser" />
 
     <!-- Open Graph meta tags -->
     <meta property="og:title" content="Adam Olšer, Software Engineer" />
-    <meta property="og:description" content="I build software that people use every day and rarely have to think about." />
+    <meta property="og:description" content="React, TypeScript and Next.js engineer in Barcelona. I build software that people use every day and rarely have to think about." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://adam-olser.github.io/" />
     <meta property="og:image" content="https://adam-olser.github.io/previews/og.jpg" />
@@ -40,7 +41,7 @@
     <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Adam Olšer, Software Engineer" />
-    <meta name="twitter:description" content="I build software that people use every day and rarely have to think about." />
+    <meta name="twitter:description" content="React, TypeScript and Next.js engineer in Barcelona. I build software that people use every day and rarely have to think about." />
     
     <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"Person","name":"Adam Olšer","jobTitle":"Software Engineer","url":"https://adam-olser.github.io/","address":{"@type":"PostalAddress","addressLocality":"Barcelona","addressCountry":"ES"},"sameAs":["https://github.com/adam-olser","https://www.linkedin.com/in/adam-ol%C5%A1er-633027142/"]}
@@ -50,7 +51,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <noscript><h1>Adam Olšer, Software Engineer</h1><p>Barcelona. I build software that people use every day and rarely have to think about.</p><p><a href="https://github.com/adam-olser">GitHub</a> · <a href="https://www.linkedin.com/in/adam-ol%C5%A1er-633027142/">LinkedIn</a></p></noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

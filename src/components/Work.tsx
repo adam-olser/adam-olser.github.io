@@ -16,7 +16,7 @@ const PROJECTS: Project[] = [
     blurb: 'Pixel-art capybara onsen with six mini-games: memory match, bath bubbles, orange catch, capy run, capy stack, and Wordlebara.',
     demo: 'https://adam-olser.github.io/capy-onsen/',
     code: 'https://github.com/adam-olser/capy-onsen',
-    image: '/previews/capy-onsen.jpg',
+    image: '/previews/capy-onsen.webp',
   },
   {
     name: 'QR Studio',
@@ -24,7 +24,7 @@ const PROJECTS: Project[] = [
     blurb: 'A QR code generator with a rate-limited backend and a fast, clean web frontend.',
     demo: 'https://adam-olser.github.io/qr-studio/',
     code: 'https://github.com/adam-olser/qr-studio',
-    image: '/previews/qr-studio.jpg',
+    image: '/previews/qr-studio.webp',
   },
   {
     name: 'Drift Board',
@@ -32,7 +32,7 @@ const PROJECTS: Project[] = [
     blurb: 'A collaborative kanban board that syncs live. No account needed, and cards can be filtered by priority.',
     demo: 'https://driftboard-4yjg.onrender.com/',
     code: 'https://github.com/adam-olser/drift-board',
-    image: '/previews/drift-board.jpg',
+    image: '/previews/drift-board.webp',
   },
   {
     name: 'React Music Player',
@@ -40,7 +40,7 @@ const PROJECTS: Project[] = [
     blurb: 'A minimal music player with keyboard controls and playlist support.',
     demo: 'https://react-music-app-adamo.netlify.app/',
     code: 'https://github.com/adam-olser/react-music-player',
-    image: '/previews/react-music-player.jpg',
+    image: '/previews/react-music-player.webp',
   },
 ];
 
@@ -55,7 +55,7 @@ function ProjectCard({ project, offset }: { project: Project; offset: boolean })
           aria-label={`Open ${project.name} demo`}
           className="block aspect-[4/3] rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container group-hover:border-primary/60 transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          <img src={project.image} alt={`${project.name} preview`} width={1200} height={900} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
+          <img src={project.image} alt={`${project.name} preview`} width={960} height={720} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
         </a>
         <span className="absolute top-3 left-3 rounded-full border border-outline-variant/40 bg-background/80 backdrop-blur px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
           {project.tag}
