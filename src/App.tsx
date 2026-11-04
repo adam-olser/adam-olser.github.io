@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
-import { useGitHub } from "./hooks/useGitHub";
+import { useLenis } from "./hooks/useLenis";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { Work } from "./components/Work";
 import { Skills } from "./components/Skills";
-import { About } from "./components/About";
+import { Story } from "./components/Story";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
 function App() {
-  const { user, repositories, loading, error } = useGitHub();
   const [isDark, setIsDark] = useState(() =>
     document.documentElement.classList.contains("dark"),
   );
+
+  useLenis();
 
   useEffect(() => {
     if (isDark) {
@@ -28,26 +29,15 @@ function App() {
     setIsDark((d) => !d);
   }
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-background text-on-surface">
-        <div className="w-12 h-12 rounded-full border-4 border-surface-container-high border-t-primary animate-spin" />
-        <p className="text-sm uppercase tracking-widest text-on-surface-variant font-medium">
-          Loading portfolio…
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-background text-on-surface">
       <Nav isDark={isDark} onThemeToggle={toggleTheme} />
       <main>
-        <Hero user={user} />
-        <Work repositories={repositories} error={error} />
+        <Hero />
+        <Work />
         <Skills />
-        <About />
-        <Contact user={user} />
+        <Story />
+        <Contact />
       </main>
       <Footer />
     </div>

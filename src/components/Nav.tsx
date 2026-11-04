@@ -36,7 +36,7 @@ export function Nav({ isDark, onThemeToggle }: NavProps) {
   const links = [
     { label: 'Work', href: '#work' },
     { label: 'Skills', href: '#skills' },
-    { label: 'About', href: '#about' },
+    { label: 'Story', href: '#story' },
     { label: 'Contact', href: '#contact' },
   ];
 

@@ -1,210 +1,112 @@
-import { useState } from 'react';
-import type { Repository } from '../hooks/useGitHub';
+import { Reveal } from './Reveal';
 
-interface WorkProps {
-  repositories: Repository[];
-  error: boolean;
+interface Project {
+  name: string;
+  tag: string;
+  blurb: string;
+  demo: string;
+  code: string;
+  image: string;
 }
 
-const FEATURED = ['capy-onsen', 'qr-studio', 'ganba-hero', 'react-music-player'];
+const PROJECTS: Project[] = [
+  {
+    name: 'Capy Onsen',
+    tag: 'Games',
+    blurb: 'Pixel-art capybara onsen with six mini-games: memory match, bath bubbles, orange catch, capy run, capy stack, and Wordlebara.',
+    demo: 'https://adam-olser.github.io/capy-onsen/',
+    code: 'https://github.com/adam-olser/capy-onsen',
+    image: '/previews/capy-onsen.jpg',
+  },
+  {
+    name: 'QR Studio',
+    tag: 'Full stack',
+    blurb: 'A QR code generator with a rate-limited backend and a fast, clean web frontend.',
+    demo: 'https://adam-olser.github.io/qr-studio/',
+    code: 'https://github.com/adam-olser/qr-studio',
+    image: '/previews/qr-studio.jpg',
+  },
+  {
+    name: 'Drift Board',
+    tag: 'Realtime',
+    blurb: 'A collaborative kanban board that syncs live. No account needed, and cards can be filtered by priority.',
+    demo: 'https://driftboard-4yjg.onrender.com/',
+    code: 'https://github.com/adam-olser/drift-board',
+    image: '/previews/drift-board.jpg',
+  },
+  {
+    name: 'React Music Player',
+    tag: 'Interface',
+    blurb: 'A minimal music player with keyboard controls and playlist support.',
+    demo: 'https://react-music-app-adamo.netlify.app/',
+    code: 'https://github.com/adam-olser/react-music-player',
+    image: '/previews/react-music-player.jpg',
+  },
+];
 
-const DESCRIPTIONS: Record<string, string> = {
-  'capy-onsen':           'Pixel-art capybara onsen with six mini-games: memory match, bath bubbles, orange catch, capy run, capy stack, and Wordlebara',
-  'qr-studio':            'Full-stack QR code generator: Python/FastAPI backend with Redis rate limiting, React + TypeScript/Vite frontend',
-  'ganba-hero':           'Japanese learning PWA with SM-2 spaced repetition, Firebase backend, streak tracking, XP progression, and RevenueCat payments',
-  'react-music-player':   'Minimal music player built with React — clean UI, keyboard controls, playlist support',
-  'drift-board':          'Real-time collaborative kanban board — no account needed, WebSocket sync, priority filters',
-  'nextjs-blog':          'Static blog built with Next.js — SSG, file-based routing, and markdown content pipeline',
-  'react-web':            'React fundamentals project — component composition, state management, and API integration',
-  'react-redux-games-db': 'Game discovery app using Redux and the RAWG API — real-time search and filtering',
-  'SW-DB':                'Star Wars character database — REST API integration, search filtering, and responsive layout',
-  'rickmortyshop':        'Rick & Morty themed e-commerce app — TypeScript, cart state, and character API integration',
-  'RandomAirportPicker':  'Random airport discovery tool — CSS animations and REST API integration',
-};
-
-// Fixes for repos where the GitHub homepage field is missing or malformed
-const FORCED_HOMEPAGES: Record<string, string> = {
-  'capy-onsen': 'https://adam-olser.github.io/capy-onsen/',
-  'ganba-hero': 'https://adam-olser.github.io/ganba-hero/',
-  'drift-board': 'https://driftboard-4yjg.onrender.com/',
-  'nextjs-blog': 'https://nextjs-blog.adam-olser.vercel.app',
-};
-
-// Static previews for repos where Microlink can't get past an auth/loading screen
-const IMAGE_OVERRIDES: Record<string, string> = {
-  'ganba-hero': '/previews/ganba-hero.webp',
-};
-
-function toTitle(name: string) {
-  return name.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
-}
-
-function screenshotUrl(url: string) {
-  return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
-}
-
-function ProjectCard({ repo, offset }: { repo: Repository; offset: boolean }) {
-  const [imgFailed, setImgFailed] = useState(false);
-  const description = DESCRIPTIONS[repo.name] || repo.description || 'A project built with care.';
-  const homepage = repo.homepage || FORCED_HOMEPAGES[repo.name] || '';
-  const primaryHref = homepage || repo.html_url;
-  const initials = toTitle(repo.name)
-    .split(' ')
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join('');
-
+function ProjectCard({ project, offset }: { project: Project; offset: boolean }) {
   return (
-    <div className={`group ${offset ? 'sm:mt-24' : ''}`}>
-      {/* Thumbnail — links to demo or source */}
-      <a
-        href={primaryHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block relative aspect-[16/10] bg-surface-container rounded-xl overflow-hidden mb-8 transition-all duration-500 group-hover:scale-[0.98]"
-      >
-        {imgFailed ? (
-          <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-surface-container to-primary-container/10 select-none">
-            <span className="text-4xl font-black tracking-tighter text-primary/50">{initials}</span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">{toTitle(repo.name)}</span>
-          </div>
-        ) : (
-          <img
-            src={IMAGE_OVERRIDES[repo.name] ?? (homepage ? screenshotUrl(homepage) : `https://opengraph.githubassets.com/1/adam-olser/${repo.name}`)}
-            alt={`${toTitle(repo.name)} preview`}
-            className="w-full h-full object-cover object-top"
-            loading="lazy"
-            onError={() => setImgFailed(true)}
-          />
-        )}
-        {/* Amethyst overlay on hover */}
-        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        {/* Corner arrow */}
-        <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
-          <span className="material-symbols-outlined text-primary text-base">north_east</span>
-        </div>
-      </a>
+    <Reveal className={`group ${offset ? 'sm:mt-14' : ''}`}>
+      <div className="relative mb-6 transition-transform duration-500 group-hover:-translate-y-1">
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${project.name} demo`}
+          className="block aspect-[4/3] rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container group-hover:border-primary/60 transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <img src={project.image} alt={`${project.name} preview`} width={1200} height={900} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
+        </a>
+        <span className="absolute top-3 left-3 rounded-full border border-outline-variant/40 bg-background/80 backdrop-blur px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
+          {project.tag}
+        </span>
+      </div>
 
       <div className="flex justify-between items-start gap-4">
-        <div className="flex-1 min-w-0">
-          <a
-            href={primaryHref}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h3 className="text-xl font-bold mb-2 text-on-surface group-hover:text-primary transition-colors duration-200">
-              {toTitle(repo.name)}
-            </h3>
-          </a>
-          <p className="text-on-surface-variant text-sm leading-relaxed mb-5 max-w-sm">
-            {description}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {repo.language && (
-              <span className="px-3 py-1 bg-surface-variant text-[10px] font-black uppercase tracking-tighter rounded text-on-surface-variant">
-                {repo.language}
-              </span>
-            )}
-            {repo.topics.slice(0, 2).map((t) => (
-              <span key={t} className="px-3 py-1 bg-surface-variant text-[10px] font-black uppercase tracking-tighter rounded text-on-surface-variant">
-                {t}
-              </span>
-            ))}
-          </div>
+        <div className="min-w-0 flex-1">
+          <h3 className="text-2xl font-extrabold tracking-tight mb-2 text-on-surface group-hover:text-primary transition-colors duration-200">
+            {project.name}
+          </h3>
+          <p className="text-on-surface-variant text-sm leading-relaxed max-w-sm">{project.blurb}</p>
         </div>
         <div className="flex flex-col gap-2 shrink-0 mt-1">
           <a
-            href={repo.html_url}
+            href={project.code}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant hover:text-primary transition-colors px-3 py-1.5 border border-outline-variant/30 rounded hover:border-primary/40"
+            className="text-[10px] uppercase tracking-widest font-bold font-mono text-on-surface-variant hover:text-primary transition-colors px-3.5 py-1.5 border border-outline-variant/40 rounded text-center hover:border-primary/50"
           >
             Code
           </a>
-          {homepage && (
-            <a
-              href={homepage}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[10px] uppercase tracking-widest font-bold text-on-primary bg-primary hover:opacity-80 transition-opacity px-3 py-1.5 rounded text-center"
-            >
-              Demo
-            </a>
-          )}
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] uppercase tracking-widest font-bold font-mono text-on-primary bg-primary hover:opacity-80 transition-opacity px-3.5 py-1.5 rounded text-center"
+          >
+            Demo
+          </a>
         </div>
       </div>
-    </div>
+    </Reveal>
   );
 }
 
-export function Work({ repositories, error }: WorkProps) {
-  const featured = FEATURED.map((name) => repositories.find((r) => r.name === name)).filter(Boolean) as Repository[];
-  const other = repositories
-    .filter((r) => !FEATURED.includes(r.name) && r.name !== 'adam-olser.github.io')
-    .slice(0, 4);
-
-  if (error) {
-    return (
-      <section id="work" className="bg-surface-container-low py-32 px-8 sm:px-12 md:px-24">
-        <div className="max-w-[1440px] mx-auto">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-4 block">Selected Works</span>
-          <h2 className="text-4xl font-black tracking-tight text-on-surface mb-8">Projects</h2>
-          <p className="text-on-surface-variant text-sm">
-            Could not load projects right now.{' '}
-            <a href="https://github.com/adam-olser" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              View on GitHub
-            </a>
-          </p>
-        </div>
-      </section>
-    );
-  }
-
+export function Work() {
   return (
-    <section id="work" className="bg-surface-container-low py-32 px-8 sm:px-12 md:px-24">
+    <section id="work" className="bg-surface-container-low py-24 md:py-32 px-8 sm:px-12 md:px-24">
       <div className="max-w-[1440px] mx-auto">
-        {/* Section header */}
-        <div className="flex justify-between items-end mb-20">
-          <div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-4 block">
-              Selected Works
-            </span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-on-surface">
-              Projects
-            </h2>
-          </div>
-          <div className="hidden sm:block h-px flex-1 mx-12 bg-outline-variant/20" />
-          <span className="hidden sm:block text-on-surface-variant text-xs font-medium uppercase tracking-widest">
-            {String(featured.length).padStart(2, '0')} / {String(FEATURED.length).padStart(2, '0')}
-          </span>
-        </div>
-
-        {/* Staggered 2-col grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-16">
-          {featured.map((repo, i) => (
-            <ProjectCard key={repo.id} repo={repo} offset={i % 2 !== 0} />
+        <Reveal className="mb-16">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-4 block">Selected work</span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-on-surface max-w-[18ch]">
+            Small products, shipped end to end.
+          </h2>
+        </Reveal>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16">
+          {PROJECTS.map((p, i) => (
+            <ProjectCard key={p.name} project={p} offset={i % 2 !== 0} />
           ))}
         </div>
-
-        {/* Other projects */}
-        {other.length > 0 && (
-          <>
-            <div className="flex items-end gap-6 mt-32 mb-16">
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
-                More Work
-              </span>
-              <h2 className="text-2xl font-black tracking-tight text-on-surface">
-                Other Projects
-              </h2>
-              <div className="hidden sm:block h-px flex-1 bg-outline-variant/20" />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-              {other.map((repo, i) => (
-                <ProjectCard key={repo.id} repo={repo} offset={i % 2 !== 0} />
-              ))}
-            </div>
-          </>
-        )}
       </div>
     </section>
   );
