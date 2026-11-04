@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import { useLenis } from "./hooks/useLenis";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
@@ -8,25 +8,24 @@ import { Story } from "./components/Story";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
+// Theme lives on <html class="dark"> (set by the inline script in index.html).
+// Reading it through useSyncExternalStore keeps hydration clean: the server snapshot is light.
+const subscribeTheme = (cb: () => void) => {
+  const o = new MutationObserver(cb);
+  o.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  return () => o.disconnect();
+};
+const getDark = () => document.documentElement.classList.contains("dark");
+
 function App() {
-  const [isDark, setIsDark] = useState(() =>
-    typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
-  );
+  const isDark = useSyncExternalStore(subscribeTheme, getDark, () => false);
 
   useLenis();
 
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDark]);
-
   function toggleTheme() {
-    setIsDark((d) => !d);
+    const next = !isDark;
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
   }
 
   return (
